@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Praiselyn ❤️</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg,#ff758c,#ff7eb3);
+    overflow:hidden;
+}
+
+.card{
+    background:white;
+    padding:40px 25px;
+    border-radius:25px;
+    text-align:center;
+    width:90%;
+    max-width:450px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.2);
+}
+
+h1{
+    font-size:28px;
+    margin-bottom:15px;
+}
+
+p{
+    margin-bottom:25px;
+    font-size:16px;
+}
+
+button{
+    padding:14px 20px;
+    font-size:18px;
+    border:none;
+    border-radius:15px;
+    cursor:pointer;
+    margin:10px;
+    transition:0.2s;
+}
+
+#yes{
+    background:#ff4d6d;
+    color:white;
+}
+
+#no{
+    background:#eee;
+    position:relative;
+}
+
+button:active{
+    transform:scale(0.95);
+}
+
+.message{
+    margin-top:20px;
+    font-weight:bold;
+    font-size:18px;
+    min-height:24px;
+}
+
+.heart{
+    position:absolute;
+    font-size:22px;
+    animation:float 1.5s forwards;
+}
+
+@keyframes float{
+    0%{opacity:1; transform:translateY(0);}
+    100%{opacity:0; transform:translateY(-150px);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Praiselyn 💕</h1>
+    <p>Will you be my Valentine? 🥺❤️</p>
+
+    <button id="yes">Yes 🥰</button>
+    <button id="no">No 🙈</button>
+
+    <div class="message" id="message"></div>
+</div>
+
+<script>
+const yesBtn = document.getElementById("yes");
+const noBtn = document.getElementById("no");
+const message = document.getElementById("message");
+
+yesBtn.onclick = function(e){
+    message.innerHTML = "YAYYY 💖 Praiselyn said YES!! Officially the cutest couple 🥰";
+    createHeart(e.clientX,e.clientY);
+    noBtn.style.display="none";
+}
+
+noBtn.onmouseover = function(){
+    moveButton();
+}
+
+noBtn.ontouchstart = function(e){
+    e.preventDefault();
+    moveButton();
+}
+
+function moveButton(){
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
+    noBtn.style.position="fixed";
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+}
+
+function createHeart(x,y){
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML="💖";
+    heart.style.left = x + "px";
+    heart.style.top = y + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{heart.remove();},1500);
+}
+</script>
+
+</body>
+</html>
